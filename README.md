@@ -1,3 +1,6 @@
+# 急いでいる方はこちら
+**手っ取り早く概要を知りたいという方は、次の動画をご覧ください（注：音が出ます）**  
+https://youtu.be/KrbE1ARE5dA
 # memo_con_appとは
 [メモコン](https://github.com/ken-hashimoto/memo_con)にログイン機能やメモの保存機能を追加してwebアプリにしたものです。  
 herokuにデプロイしています。[こちら](https://memo-con.herokuapp.com/)から確認できます。
@@ -19,3 +22,5 @@ herokuにデプロイしています。[こちら](https://memo-con.herokuapp.co
 * ~~postgreSQLへの移行~~ **完了（2022/04/12）**
 * ~~退会機能の追加~~ **完了（2022/04/12）**
 * マイページに保存されたメモのソート機能追加
+# 使用例
+<img src="https://user-images.githubusercontent.com/98263011/162879610-56caa8da-6d38-4e89-b99a-456be1bf847d.gif" width="100%">
