@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="目を離さずにメモはとる">
+    <title>メモコン</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/normalize.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+  <main class="content">
+    {% block contents%}
+
+    {% endblock %}
+  </main>
+  <footer>
+    <div id='div_img'>
+      <a href="/"><img src="/static/images/logo.透過.png" alt="メモコン" title="メモコン" id="logo"></a></br>
+      {% if session['user'] %}
+      {{ session['user'] }}でログインしています
+      {% endif %}
+    </div>
+      <div id="footer_menu">
+        {% if session['user'] %}
+        <a href="/mypage">マイページ</a>
+        <a href="/logout">ログアウト</a>
+        {% else %}
+        <a href="/login">ログイン・会員登録</a>
+        {% endif %}
+        </div>
+  </footer>
+  <script src = "/static/memo_con.js" ></script>
+  </body>
+</html>

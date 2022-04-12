@@ -1,0 +1,224 @@
+body{
+  background-color: rgb(255, 245, 233);
+  /* フッターを最下部に設置 */
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main{
+  flex: 1;
+}
+.content{
+  width: 70%;
+  margin: 10px auto;
+  text-align: center;
+  border-radius: 10px;
+  min-width: 600px;
+}
+#div{
+  min-width: 800px;
+}
+.output{
+  margin-top: 30px;
+  background-color: rgb(199, 195, 195);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 10px;
+}
+main textarea{
+  width: 80%;
+  height: 100px;
+}
+/* footer */
+footer{
+  background: #ede6e6;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#div_img{
+  text-align: center;
+}
+
+#footer_menu{
+  position:absolute;
+  right:20px;
+}
+
+footer p{
+  margin:0;
+}
+footer div img{
+  width: 50%;
+  mix-blend-mode:darken;
+}
+
+
+/* main */
+main p{
+  font-weight: bold;
+}
+main ul{
+  list-style: none;
+}
+main ul li{
+  padding: 2px 0;
+}
+
+a,a:link {
+    color: #3585b7;
+}
+a:visited{
+    color: #6252B7;
+}
+a:hover{
+    text-decoration: none; /* テキストの装飾的な線の表示を設定 */
+    color: #555;
+}
+/* login */
+.login{
+  /* background-color: #a1c7de; */
+  width:40%;
+  border: 3px solid #ccc;
+  border-radius: 15px;
+  background-color: white;
+  margin:0 auto;
+  box-sizing: border-box;
+  padding:30px;
+  margin-bottom:30px;
+}
+.login-table{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login th{
+  width: 10%;
+  text-align: right;
+  padding:3%;
+}
+.login td{
+  width: 70%;
+  padding:3%;
+}
+.login-input{
+  border-radius: 10px;
+  height:30px;
+  border:3px solid #ccc;
+  font-size: 100%;
+  width:85%;
+}
+.login-input:focus{
+  outline: 0;
+  border-color: #64b6ed;
+}
+/* mypage */
+.record{
+  width:80%;
+  margin: 0 auto;
+  text-align: center;
+  /* display:grid; */
+  justify-items:center;
+}
+.record table{
+    counter-reset: rowCount;
+    border-collapse: collapse;
+    border: solid 2px black;
+    margin-top:10px;
+    margin-bottom:20px;
+    width: 100%;
+}
+#del_btn{
+  display: block;
+  margin: 0 0 0 auto;
+}
+.record table th,.record td{
+  border:1px solid black;
+}
+.record table th{
+  padding:30px;
+  color: black;/* 見出しの文字色 */
+  background-color: #fff1a9; /* 見出しの背景色 */
+}
+.record table td{
+  padding:10px;
+}
+.record tbody tr {
+  counter-increment: rowCount;
+}
+.record tbody tr td:first-child::before {
+  content: counter(rowCount);
+}
+#edit{
+  display: block;
+  margin: 0 0 0 auto;
+}
+#update{
+  display: block;
+  margin: 0 0 0 auto;
+}
+/* mypage_record */
+.memo_record{
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width:70%;
+  margin:0 auto;
+  min-width: 500px;
+}
+.memo_info{
+  display: flex;
+  border-bottom: 1px solid #64b6ed;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  padding: 4%;
+}
+.memo_info .memo_title{
+  width:70%;
+  height:min-content;
+  text-align: left;
+}
+.memo_info .memo_date{
+  width: 30%;
+  font-weight: lighter;
+  text-align: center;
+}
+.memo_contents{
+  padding:3%;
+  width:80%;
+  margin:0 auto;
+  text-align: left;
+}
+/* pure css */
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}

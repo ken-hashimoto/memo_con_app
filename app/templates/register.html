@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+{% block  contents %}
+<div class="message">
+  <h1>会員登録</h1>
+  {% if status == 'exist_user' %}
+  <span style="color:#ff0000;">そのユーザーIDはすでに使われています。</span>
+  {% endif %}
+  {% if status == 'wrong_password' %}
+  <span style="color:#ff0000;">一回目と二回目のパスワードが一致しませんでした。</span>
+  {% endif %}
+  <div class="login">
+    <form action="/register" method="POST">
+      <table class="login-table">
+        <tr>
+        <th><label for="UserID">ID:</label></th>
+        <td><input type="text" name="UserID" id="UserID" placeholder="20文字以内の半角英数字" maxlength="20" pattern="[a-zA-Z0-9]+" required class="login-input"></td>
+        </tr>
+        <tr>
+        <th><label for="pw">Password:</label></th>
+        <td><input type="password" name="pw" id="pw" placeholder="5文字以上の半角英数字" minlength = 5 pattern="[a-zA-Z0-9]+" required class="login-input"></td>
+        </tr>
+        <tr>
+        <th><label for="pw_confirm">Password:<br>(確認用)</label></th>
+        <td><input type="password" name="pw_confirm" id="pw_confirm" pattern="[a-zA-Z0-9]+" placeholder="5文字以上の半角英数字" minlength = 5 required class="login-input"></td>
+        </tr>
+      </table>
+      <p><input class="pure-button pure-button-primary" type="submit" value="登録"></p>
+    </form>
+  </div>
+  <a href="/login">ログインはこちらから</a>
+  </div>
+{% endblock %}

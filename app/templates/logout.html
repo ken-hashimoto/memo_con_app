@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block  contents %}
+{% if status == 'already_logged_in' %}
+<h1>ログアウトしました</h1>
+<a href="/">トップへ</a>
+{% elif status == 'not_logged_in' %}
+<h1>ログインしてください</h1>
+<a href="/login">ログイン</a>
+{% endif %}
+{% endblock %}

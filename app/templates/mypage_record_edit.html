@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block  contents %}
+<h1>{{ session['user'] }}さんのマイページ</h1>
+{% if record.UserID == session['user'] %}
+<form action="/mypage/{{ record.Number }}" method='POST'>
+<div class="memo_record">
+<div class="memo_info">
+  <div class="memo_title">
+  <input type="text" name="record_title" id="record_title" value={{ record.Title }}>
+  </div>
+  <div class="memo_date">
+  {{ record.Date.strftime("%Y/%m/%d %H:%M:%S")}}
+  </div>
+  </div>
+<div class="memo_contents">
+  <textarea name="record_content" rows="10" cols="40" id="record_content">{{record.Memo}}
+</textarea>
+  <input class="button-secondary pure-button" type="submit" value="更新" id="update">
+</form>
+  </div>
+  </div>
+{% else %}
+アクセス権限がありません。
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block  contents %}
+<h1>{{ session['user'] }}さんのマイページ</h1>
+{% if record.UserID == session['user'] %}
+<div class="memo_record">
+<div class="memo_info">
+  <div class="memo_title">
+  <h2>{{ record.Title }}</h2>
+  </div>
+  <div class="memo_date">
+  {{ record.Date.strftime("%Y/%m/%d %H:%M:%S") }}
+  </div>
+  </div>
+<div class="memo_contents">
+  <div id="record_copy">
+  {% for sentence in record.Memo.split('\n') %}
+  {{ sentence }}
+  <br>
+  {% endfor %}
+  </div>
+  <input class="button-secondary pure-button" type="button" value="編集" id="edit" onClick="location.href='/mypage/{{ record.Number }}/edit'">
+  </div>
+  </div>
+{% else %}
+アクセス権限がありません。
+{% endif %}
+{% endblock %}

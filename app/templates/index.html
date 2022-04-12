@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block  contents %}
+<div id="input">
+  <textarea name="memo" id="memo"></textarea><br>
+  <input class="button-secondary pure-button" type="button" value="今までの内容をコピー" onclick="copy()">
+  <input class="button-secondary pure-button" type="button" value="今までの内容を削除" onclick="delete_memo()">
+  <input class="pure-button pure-button-primary" type="button" value="保存" id="save">
+</div>
+<div class = "output" id="output"></div>
+<div class="caution">
+<p>便利な機能と注意</p>
+<ul>
+<li>メモした内容はブラウザに保存されます。削除したいときは上のボタンを押してください。</li>
+<li>会員登録をするとメモした内容を保存することができます。</li>
+<li>念のため、機密性の高い情報は保存しないようにお願いします。</li>
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block  contents %}
+{% if session['user'] %}
+<h1>{{ session['user'] }}さんのマイページ</h1>
+過去のメモ
+<form name="mypage">
+<div class="record">
+  <table class="record-table">
+    <thead>
+    <tr>
+      <th>No.</th> <th>タイトル</th> <th>日時</th> <th><img src="/static/images/check_icon.png" width="20px"></th>
+    </tr>
+  </thead>
+  <tbody>
+{% for memo in all_memo %}
+<tr>
+  <td></td>
+  <td><a href="/mypage/{{memo.Number}}">{{memo.Title}}</a></td>
+  <td>{{memo.Date.strftime("%Y/%m/%d %H:%M:%S")}}</td>
+  <td><input type="checkbox" name="del_check" value={{ memo.Number }} ></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<input class="button-error pure-button" type="button" value="チェックした項目を削除" id="del_btn" onclick=delete_record()>
+</div>
+</form>
+{% else %}
+<!-- <h1><a href="/login">ログイン</a>してください</h1> -->
+{% endif %}
+{% endblock %}

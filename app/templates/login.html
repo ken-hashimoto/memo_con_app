@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block  contents %}
+<div class="message">
+  <h1>ログイン</h1>
+  {% if status == 'error' %}
+  <span style="color:#ff0000;">IDまたはパスワードが間違っています。</span>
+  {% endif %}
+
+{% if status == 'not_logged_in' or status == 'error'%}
+<div class="login">
+  <form action="/login" method="POST">
+    <table class="login-table">
+      <tr>
+      <th><label for="UserID">ID:</label></th>
+      <td><input type="text" name="UserID" id="UserID" required placeholder="20文字以内の半角英数字" class="login-input"></td>
+      </tr>
+      <tr>
+      <th><label for="Password">Password:</label></th>
+      <td><input type="password" name="pw" id="pw" required placeholder="5文字以上の半角英数字" class="login-input"></td>
+      </tr>
+    </table>
+    <p><input class="pure-button pure-button-primary" type="submit" value="ログイン"></p>
+  </form>
+</div>
+  <a href="/register">会員登録はこちらから</a>
+{% elif status == 'already_logged_in' %}
+<h1>あなたは{{ session['user'] }}でログイン済みです</h1>
+{% endif %}
+{% endblock %}
