@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from models.database import Base
-from datetime import datetime
+from datetime import datetime,timedelta
 import pytz
 class MemoContents(Base):
   __tablename__ = 'memocontents' # テーブル名を設定
@@ -9,7 +9,7 @@ class MemoContents(Base):
   UserID = Column(String(20))
   Title = Column(String(128),default = "無題")
   Memo = Column(Text)
-  Date = Column(DateTime,default=datetime.now(pytz.timezone('Asia/Tokyo')))
+  Date = Column(DateTime,default=datetime.utcnow() + timedelta(hours=9))
   def __init__(self, UserID=None,Title=None, Memo=None, Date=None):
     self.UserID = UserID
     self.Title = Title

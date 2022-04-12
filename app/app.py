@@ -3,7 +3,7 @@ from flask import Flask, jsonify, render_template, request, session, redirect, u
 from flask_sqlalchemy import SQLAlchemy
 from models.models import MemoContents,User
 from models.database import db_session
-from datetime import datetime
+from datetime import datetime,timedelta
 import pytz
 import os
 from hashlib import sha256
@@ -39,7 +39,7 @@ def save():
   if title=="":
     title = "無題"
   if is_login():
-    content = MemoContents(session['user'],title,text,datetime.now(pytz.timezone('Asia/Tokyo')))
+    content = MemoContents(session['user'],title,text,datetime.utcnow() + timedelta(hours=9))
     db_session.add(content)
     db_session.commit()
     return jsonify({'result':'保存されました'})
