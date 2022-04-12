@@ -3,9 +3,9 @@
 https://youtu.be/KrbE1ARE5dA
 # memo_con_appとは
 [メモコン](https://github.com/ken-hashimoto/memo_con)にログイン機能やメモの保存機能を追加してwebアプリにしたものです。  
-herokuにデプロイしています。[こちら](https://memo-con.herokuapp.com/)から確認できます。
+[herokuにデプロイしています。ぜひご確認ください。](https://memo-con.herokuapp.com/)
 # 使い方
-基本的な使い方はこちらを[参照](https://github.com/ken-hashimoto/memo_con)してください。  
+基本的な使い方は[こちら](https://github.com/ken-hashimoto/memo_con)を参照してください。  
 以下では今回初めて追加された機能の使い方について説明します。  
 初めて使う方はまず会員登録を行ってください。  
 無事会員登録することができたら、自動的にログインされた状態になります。
