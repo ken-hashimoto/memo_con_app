@@ -1,0 +1,43 @@
+{% extends "template.html" %}
+{% block  contents %}
+{% if not session['user'] %}
+<h1>ログインしてください。</h1>
+{% elif status == 'unexpected_error' %}
+<h1>予期せぬエラーが発生しました。</h1>
+{% elif status == 'wrong_input' %}
+<h1>退会</h1>
+<span style="color:#ff0000;">IDまたはパスワードが間違っています。</span>
+<div class="login">
+  <form action="/delete_account" method="POST">
+    <table class="login-table">
+      <tr>
+      <th><label for="UserID">ID:</label></th>
+      <td><input type="text" name="UserID" id="UserID" required placeholder="20文字以内の半角英数字" class="login-input" value={{ session['user'] }}></td>
+      </tr>
+      <tr>
+      <th><label for="Password">Password:</label></th>
+      <td><input type="password" name="pw" id="pw" required placeholder="5文字以上の半角英数字" class="login-input"></td>
+      </tr>
+    </table>
+    <p><input type="submit" class="button-error pure-button" value="退会" onclick="return confirm('退会すると今までメモした内容は全て失われます。\nこの操作は取り消せません。よろしいですか？')"></p>
+  </form>
+</div>
+{% else %}
+<h1>退会</h1>
+<div class="login">
+  <form action="/delete_account" method="POST">
+    <table class="login-table">
+      <tr>
+      <th><label for="UserID">ID:</label></th>
+      <td><input type="text" name="UserID" id="UserID" required placeholder="20文字以内の半角英数字" class="login-input" value={{ session['user'] }} readonly></td>
+      </tr>
+      <tr>
+      <th><label for="Password">Password:</label></th>
+      <td><input type="password" name="pw" id="pw" required placeholder="5文字以上の半角英数字" class="login-input"></td>
+      </tr>
+    </table>
+    <p><input type="submit" class="button-error pure-button" value="退会" onclick="return confirm('退会すると今までメモした内容は全て失われます。\nこの操作は取り消せません。よろしいですか？')"></p>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

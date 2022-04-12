@@ -160,6 +160,9 @@ a:hover{
   display: block;
   margin: 0 0 0 auto;
 }
+#delete_account_button{
+  color: white;
+}
 /* mypage_record */
 .memo_record{
   background-color: white;

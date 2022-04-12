@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from models.database import Base
 from datetime import datetime
+import pytz
 class MemoContents(Base):
   __tablename__ = 'memocontents' # テーブル名を設定
   # 作成するテーブルのカラムを定義
@@ -8,14 +9,14 @@ class MemoContents(Base):
   UserID = Column(String(20))
   Title = Column(String(128),default = "無題")
   Memo = Column(Text)
-  Date = Column(DateTime,default=datetime.now())
+  Date = Column(DateTime,default=datetime.now(pytz.timezone('Asia/Tokyo')))
   def __init__(self, UserID=None,Title=None, Memo=None, Date=None):
     self.UserID = UserID
     self.Title = Title
     self.Memo = Memo
     self.Date = Date
   def __repr__(self):
-    return '<Title %r>' % (self.title)
+    return '<Title %r>' % (self.Title)
 
 class User(Base):
     __tablename__ = 'users' # テーブル名を設定
@@ -28,4 +29,4 @@ class User(Base):
         self.hashed_password = hashed_password
 
     def __repr__(self):
-        return '<Name %r>' % (self.user_name)
+        return '<UserID %r>' % (self.UserID)

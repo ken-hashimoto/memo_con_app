@@ -1,15 +1,23 @@
+from pydoc import allmethods
 from flask import Flask, jsonify, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from models.models import MemoContents,User
 from models.database import db_session
 from datetime import datetime
-# from app import key
 import pytz
 import os
 from hashlib import sha256
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")  #or key.SECRET_KEY
-SALT = os.environ.get("SALT")  #or key.SALT
+
+if os.path.exists("app/key.py"):
+  from app import key
+  app.secret_key = key.SECRET_KEY
+  SALT = key.SALT
+else:
+  app.secret_key = os.environ.get("SECRET_KEY")
+  SALT = os.environ.get("SALT")
+
+
 #関数--------------------------------------------
 def is_login():
   if 'user' in session:
@@ -143,6 +151,38 @@ def register():
       return redirect('/mypage')
     else:
       return render_template('register.html')
+#------------------------------------------------
+#delete_account----------------------------------
+@app.route('/delete_account',methods=['GET','POST'])
+def delete_account():
+  if request.method == 'GET':
+    if is_login():
+      user = User.query.filter_by(UserID=session['user']).first()
+      if user:
+        return render_template('delete_account.html',user=user)
+      else:
+        return render_template('delete_account.html',user=user,status='unexpected_error')
+    else:
+      return redirect('/mypage')
+  if request.method == 'POST':
+    userid = request.form.get('UserID','')
+    password = request.form.get('pw','')
+    user = User.query.filter_by(UserID=userid).first()
+    if is_login() and user and user.UserID == userid and session['user'] == userid:
+        account = User.query.get(userid)
+        hashed_password = sha256((userid + password + SALT).encode("utf-8")).hexdigest()
+        if account.hashed_password == hashed_password:
+          db_session.delete(account)
+          all_memo = MemoContents.query.filter_by(UserID = userid).all()
+          for memo in all_memo:
+            db_session.delete(memo)
+          db_session.commit()
+          try_logout()
+          return render_template('delete_complete.html')
+        else:
+          return render_template('delete_account.html',user=user.UserID,status='wrong_input')
+    else:
+      return render_template('delete_account.html',user=user,status='unexpected_error')
 #------------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
